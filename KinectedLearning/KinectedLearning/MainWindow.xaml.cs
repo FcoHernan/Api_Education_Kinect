@@ -605,7 +605,7 @@ namespace KinectedLearning
             }
             catch (System.IO.FileNotFoundException ex)
             {
-                MessageBox.Show("Brak pliku dźwiękowego: \n" + ex.Message);
+                MessageBox.Show(" Archivo no encontrado.." + ex.Message);
             }
         }
         #endregion

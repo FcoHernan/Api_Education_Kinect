@@ -6,9 +6,9 @@
         Loaded="Window_Loaded" Style="{StaticResource KinectAppWindow}" Closed="Window_Closed">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#D9040833" Offset="0.2" />
+            <GradientStop Color="green" Offset="0.2" />
             <GradientStop Color="Chartreuse" Offset="1" />
-            <GradientStop Color="#E61747B2" Offset="0.8" />
+            <GradientStop Color="White" Offset="0.8" />
         </LinearGradientBrush>
     </Window.Background>
 
@@ -86,6 +86,7 @@
                 <Image x:Name="iKnee" Style="{StaticResource kinImage}" Source="Images/knee.png" />
                 <Image x:Name="iFoot" Style="{StaticResource kinImage}" Source="Images/foot.png" />
             </Canvas>
+            <TextBlock Margin="191.078,39.471,178.881,20.987" Grid.Row="2" TextWrapping="Wrap" FontSize="32"><Run Language="es-cl" Text="Selecciona con tu mano la parte del cuerpo, y arrástrala al lugar que corresponda. Para seleccionar debes mantener la mano sobre una palabra hasta que la mano cambie a su icono correspondiente."/></TextBlock>
         </Grid>
     </Viewbox>
 </Window>
