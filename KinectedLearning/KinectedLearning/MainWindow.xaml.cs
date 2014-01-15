@@ -68,7 +68,7 @@ namespace KinectedLearning
         {
             InitializeComponent();
 
-            kinectButtons = new List<HoverButton>()
+            kinectButtons = new List<HoverButton>() //creación de una lista de botones a utilizar 
             {
                 khbHeadSource,
                 khbHeadTarget,
@@ -109,7 +109,7 @@ namespace KinectedLearning
                     };
                     _sensor.SkeletonStream.Enable(parameters);
 
-                    _sensor.Start();
+                    _sensor.Start(); //inicia Kinect
                 }
             }
 
@@ -122,8 +122,9 @@ namespace KinectedLearning
             var myGameThread = new Thread(this.GameThread);
             myGameThread.SetApartmentState(ApartmentState.STA);
             myGameThread.Start();
-
-            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Lets's begin!");
+            
+            //texto flotante indicando posición y un texto a mostrar
+            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Comencemos!");
         }
         #endregion
 
@@ -146,7 +147,7 @@ namespace KinectedLearning
 
                         TrackJoint(cursor, handCursor, LayoutRoot);
 
-                        if (!IsEnd())
+                        if (!IsEnd()) //esperar si el usuario toma una palabra y la arrastra
                         {
                             DragGesture(cursor, iHead, LayoutRoot, isHeadSourceClicked, isHeadTargetClicked);
                             DragGesture(cursor, iShoulder, LayoutRoot, isShoulderSourceClicked, isShoulderTargetClicked);
@@ -158,7 +159,7 @@ namespace KinectedLearning
 
                             ActivateButtons(kinectButtons);
                         }
-                        else
+                        else //si terminó mostrar texto en pantalla.
                         {
                             tbGameOverText.Visibility = System.Windows.Visibility.Visible;
                         }
@@ -292,8 +293,8 @@ namespace KinectedLearning
             _itemTop = itemTopLeft.Y + (target.ActualHeight / 2);
         }
         #endregion
-
-        #region Kinect source buttons click events
+        //funciones de eventos al tomar cada texto
+        #region Kinect source buttons click events 
         private void khbHeadSource_Click(object sender, RoutedEventArgs e)
         {
             if (!isAnyDragged)
@@ -301,7 +302,7 @@ namespace KinectedLearning
                 HideButtonShowImage(khbHeadSource, iHead);
                 isHeadSourceClicked = true;
                 isAnyDragged = true;
-                PlaySound("click");
+                PlaySound("click"); 
             }
         }
 
@@ -386,15 +387,15 @@ namespace KinectedLearning
                             SnapToTarget(GameCanvas, iHead, PointersGrid, khbHeadTarget);
                             isHeadTargetClicked = true;
                             isAnyDragged = false;
-                            PlaySound("good");
-                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Great!");
+                            PlaySound("good"); //ejecutar sonido si se posicionó bien la palabra y mostrar texto
+                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "GENIAL!");
                         }
                     }
                 }
             }
             if (!isHeadTargetClicked)
             {
-                PlaySound("wrong");
+                PlaySound("wrong"); //reproducir sonido de error en caso de equivocación
             }
         }
 
@@ -412,7 +413,7 @@ namespace KinectedLearning
                             isShoulderTargetClicked = true;
                             isAnyDragged = false;
                             PlaySound("good");
-                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Brilliant!");
+                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Brillante!");
                         }
                     }
                 }
@@ -437,7 +438,7 @@ namespace KinectedLearning
                             isElbowTargetClicked = true;
                             isAnyDragged = false;
                             PlaySound("good");
-                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Amazing!");
+                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Asombroso!");
                         }
                     }
                 }
@@ -462,7 +463,7 @@ namespace KinectedLearning
                             isStomachTargetClicked = true;
                             isAnyDragged = false;
                             PlaySound("good");
-                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Great!");
+                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "GENIAL!");
                         }                    
                     }
                 }
@@ -487,7 +488,7 @@ namespace KinectedLearning
                             isThighTargetClicked = true;
                             isAnyDragged = false;
                             PlaySound("good");
-                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Nice!");
+                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "BIEN!");
                         }
                     }
                 }
@@ -512,7 +513,7 @@ namespace KinectedLearning
                             isKneeTargetClicked = true;
                             isAnyDragged = false;
                             PlaySound("good");
-                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Very Good!");
+                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "MUY BIEN!");
                         }                    
                     }
                 }
@@ -537,7 +538,7 @@ namespace KinectedLearning
                             isFootTargetClicked = true;
                             isAnyDragged = false;
                             PlaySound("good");
-                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Fantastic!");
+                            FlyingText.NewFlyingText(this.screenRect.Width / 30, new Point(this.screenRect.Width / 2, this.screenRect.Height / 2), "Fantastico!");
                         }
                     }
                 }
@@ -595,7 +596,7 @@ namespace KinectedLearning
         #endregion
 
         #region Music
-        private void PlaySound(string fileName)
+        private void PlaySound(string fileName) //funcion que reproduce los sonidos correspondientes
         {
             player.SoundLocation = "Music\\" + fileName + ".wav";
             try
